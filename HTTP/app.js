@@ -64,4 +64,17 @@ form.addEventListener("submit", (event) =>{
       const title = event.currentTarget.querySelector("#title").value;
       const content = event.currentTarget.querySelector("#content").value;
       CreatePost(title, content);
-})
+});
+
+postList.addEventListener("click",
+      (event) => {
+            console.log(event);
+            if(event.target.tagName === "BUTTON"){
+                  const postId = event.target.closest("article").id;
+                  console.log(postId);
+                  SendHTTPRequest("DELETE",`https://jsonplaceholder.typicode.com/posts/${postId}`);
+            }
+           
+      }
+      
+);
